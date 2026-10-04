@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buna & Bites Café | Authentic Ethiopian Coffee & Dining in Addis Ababa</title>
+    <!-- Basic SEO Meta Tags -->
+    <meta name="description" content="Experience authentic Ethiopian Buna coffee culture paired with modern bites, pastries, and delicious meals in Addis Ababa. Visit Buna & Bites Café today!">
+    <meta name="keywords" content="Buna & Bites, Cafe Addis Ababa, Ethiopian Coffee, Coffee Shop Bole, Restaurant Addis Ababa, Buna Ceremony, Specialty Coffee Ethiopia">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration for Custom Theme Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        espresso: '#2C1A1D',
+                        roast: '#4A2E2B',
+                        amber: '#C88A34',
+                        amberHover: '#B07527',
+                        cream: '#FAF6F0',
+                        sage: '#4A6B5D',
+                        warmGray: '#8C827A'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .glass-nav {
+            background: rgba(44, 26, 29, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(44, 26, 29, 0.75) 0%, rgba(44, 26, 29, 0.88) 100%);
+        }
+
+        .tab-btn.active {
+            background-color: #C88A34;
+            color: #ffffff;
+            border-color: #C88A34;
+        }
+
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Pulse animation for WhatsApp badge */
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+        .pulse-btn {
+            animation: pulse-subtle 2.5s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-cream text-espresso font-sans antialiased selection:bg-amber selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-roast/30 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-full bg-amber flex items-center justify-center text-espresso text-xl font-bold shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid font-serif text-white">B</i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold text-cream tracking-wide">Buna & Bites</span>
+                        <span class="text-xs text-amber tracking-widest uppercase -mt-1 font-medium">Café & Restaurant</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-cream hover:text-amber font-medium transition-colors duration-200">Home</a>
+                    <a href="#about" class="text-cream hover:text-amber font-medium transition-colors duration-200">About Us</a>
+                    <a href="#menu" class="text-cream hover:text-amber font-medium transition-colors duration-200">Menu</a>
+                    <a href="#gallery" class="text-cream hover:text-amber font-medium transition-colors duration-200">Gallery</a>
+                    <a href="#contact" class="text-cream hover:text-amber font-medium transition-colors duration-200">Contact</a>
+                </nav>
+
+                <!-- Action Button & Phone -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="https://wa.me/251911234567?text=Hello%20Buna%20%26%20Bites!%20I%20would%20like%20to%20reserve%20a%20table%20or%20place%20an%20order." target="_blank" class="bg-sage hover:bg-emerald-700 text-white font-medium px-4 py-2.5 rounded-xl shadow-md transition-all duration-200 flex items-center space-x-2 text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>WhatsApp Order</span>
+                    </a>
+                    <a href="#contact" class="bg-amber hover:bg-amberHover text-espresso font-semibold px-5 py-2.5 rounded-xl shadow-md transition-all duration-200 text-sm">
+                        Reserve Table
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Menu Toggle -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-cream hover:text-amber focus:outline-none p-2 rounded-lg" aria-label="Toggle menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-espresso border-b border-roast/50 px-4 pt-3 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:text-amber hover:bg-roast/40">Home</a>
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:text-amber hover:bg-roast/40">About Us</a>
+            <a href="#menu" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:text-amber hover:bg-roast/40">Menu</a>
+            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:text-amber hover:bg-roast/40">Gallery</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-cream hover:text-amber hover:bg-roast/40">Contact</a>
+            <div class="pt-2 flex flex-col space-y-2">
+                <a href="https://wa.me/251911234567?text=Hello%20Buna%20%26%20Bites!%20I%20would%20like%20to%20reserve%20a%20table%20or%20place%20an%20order." target="_blank" class="w-full bg-sage text-white text-center font-medium px-4 py-2.5 rounded-xl shadow flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>WhatsApp Order / Reserve</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-espresso">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1920&auto=format&fit=crop" 
+                 alt="Ethiopian Coffee & Dining" 
+                 class="w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/1920x1080/2C1A1D/FAF6F0?text=Buna+%26+Bites+Cafe'">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 flex flex-col items-center text-center">
+            <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider text-amber bg-amber/10 border border-amber/30 mb-6 uppercase">
+                <i class="fa-solid fa-mug-hot mr-2"></i> Welcome to Addis Ababa's Culinary Haven
+            </span>
+
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-cream leading-tight max-w-4xl mb-6">
+                Where Traditional <span class="text-amber italic">Buna</span> Meets Modern <span class="text-amber italic">Bites</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-cream/80 max-w-2xl mb-10 font-light leading-relaxed">
+                Experience authentic Ethiopian roasted coffee ceremonies alongside artisanal pastries, gourmet burgers, and rich traditional local flavors right in the heart of Bole, Addis Ababa.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a href="#menu" class="w-full sm:w-auto bg-amber hover:bg-amberHover text-espresso font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Explore Our Menu</span>
+                </a>
+                <a href="https://wa.me/251911234567?text=Hello%20Buna%20%26%20Bites!%20I%20want%20to%20order/reserve." target="_blank" class="w-full sm:w-auto bg-transparent border-2 border-cream/80 hover:border-amber text-cream hover:text-amber font-semibold px-8 py-4 rounded-xl transition-all text-center flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-xl text-sage"></i>
+                    <span>Order via WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- Quick Info Highlights -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-cream/10 w-full max-w-4xl text-left">
+                <div class="flex items-center space-x-3 text-cream">
+                    <div class="p-3 bg-roast/60 rounded-lg text-amber"><i class="fa-solid fa-location-dot text-xl"></i></div>
+                    <div>
+                        <p class="text-xs text-warmGray uppercase font-semibold">Location</p>
+                        <p class="text-sm font-medium">Bole Road, Addis Ababa</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 text-cream">
+                    <div class="p-3 bg-roast/60 rounded-lg text-amber"><i class="fa-solid fa-clock text-xl"></i></div>
+                    <div>
+                        <p class="text-xs text-warmGray uppercase font-semibold">Opening Hours</p>
+                        <p class="text-sm font-medium">Daily: 7 AM - 10 PM</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 text-cream">
+                    <div class="p-3 bg-roast/60 rounded-lg text-amber"><i class="fa-solid fa-fire-flame-curved text-xl"></i></div>
+                    <div>
+                        <p class="text-xs text-warmGray uppercase font-semibold">Fresh Roast</p>
+                        <p class="text-sm font-medium">Daily Buna Ceremony</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 text-cream">
+                    <div class="p-3 bg-roast/60 rounded-lg text-amber"><i class="fa-solid fa-wifi text-xl"></i></div>
+                    <div>
+                        <p class="text-xs text-warmGray uppercase font-semibold">Work & Dine</p>
+                        <p class="text-sm font-medium">Free High-Speed Wi-Fi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 lg:py-28 bg-cream text-espresso relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Image Stack Collage -->
+                <div class="relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Traditional Buna Coffee Preparation" 
+                             class="w-full h-[400px] sm:h-[480px] object-cover"
+                             onerror="this.src='https://placehold.co/800x600/4A2E2B/FAF6F0?text=Ethiopian+Coffee+Ceremony'">
+                    </div>
+                    <!-- Secondary Accent Image -->
+                    <div class="absolute -bottom-8 -right-6 z-20 w-1/2 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden sm:block">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600&auto=format&fit=crop" 
+                             alt="Delicious Bites and Food" 
+                             class="w-full h-48 object-cover"
+                             onerror="this.src='https://placehold.co/600x400/2C1A1D/FAF6F0?text=Fresh+Bites'">
+                    </div>
+                    <!-- Decorative Badge -->
+                    <div class="absolute -top-6 -left-6 z-20 bg-amber text-espresso p-4 rounded-2xl shadow-lg hidden sm:flex flex-col items-center justify-center font-serif font-bold">
+                        <span class="text-2xl">100%</span>
+                        <span class="text-xs tracking-wider uppercase">Organic Beans</span>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="flex flex-col space-y-6">
+                    <div>
+                        <span class="text-amber font-semibold uppercase tracking-wider text-sm">Our Story & Passion</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-espresso mt-2 leading-tight">
+                            Crafting Warmth, Culture & Exceptional Flavor
+                        </h2>
+                    </div>
+
+                    <p class="text-roast/90 text-base sm:text-lg leading-relaxed">
+                        At <strong class="text-espresso">Buna & Bites Café</strong>, coffee isn’t just a beverage—it’s a timeless ritual of connection. Rooted in the heart of Addis Ababa, we blend the rich heritage of authentic Ethiopian <em>Jebena Buna</em> with a modern, relaxed dining experience.
+                    </p>
+
+                    <p class="text-roast/80 text-sm sm:text-base leading-relaxed">
+                        Whether you are stopping by for your morning espresso fix, gathering with friends for a traditional coffee ceremony accompanied by aromatic frankincense, or enjoying our chef’s specialty burgers and fresh local bites, we welcome you with genuine Ethiopian hospitality (<em>Tenayistillign!</em>).
+                    </p>
+
+                    <!-- Feature Bullet Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 bg-amber/20 rounded-lg text-amber mt-1"><i class="fa-solid fa-seedling"></i></div>
+                            <div>
+                                <h4 class="font-bold text-espresso text-sm">Single-Origin Beans</h4>
+                                <p class="text-xs text-warmGray">Sourced directly from Yirgacheffe & Sidama regions.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 bg-amber/20 rounded-lg text-amber mt-1"><i class="fa-solid fa-bread-slice"></i></div>
+                            <div>
+                                <h4 class="font-bold text-espresso text-sm">Freshly Baked Daily</h4>
+                                <p class="text-xs text-warmGray">Artisanal pastries, cakes, and gourmet buns baked in-house.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 bg-amber/20 rounded-lg text-amber mt-1"><i class="fa-solid fa-couch"></i></div>
+                            <div>
+                                <h4 class="font-bold text-espresso text-sm">Cozy Ambiance</h4>
+                                <p class="text-xs text-warmGray">Perfect for remote work, business meetings, or relaxed weekends.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="p-2 bg-amber/20 rounded-lg text-amber mt-1"><i class="fa-solid fa-heart"></i></div>
+                            <div>
+                                <h4 class="font-bold text-espresso text-sm">Authentic Hospitality</h4>
+                                <p class="text-xs text-warmGray">Warm and attentive service with traditional Ethiopian warmth.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="#menu" class="inline-flex items-center space-x-2 text-amber hover:text-amberHover font-bold text-base group">
+                            <span>See our full menu & beverages</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 lg:py-28 bg-espresso text-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-amber font-semibold uppercase tracking-wider text-sm">Delicious Offerings</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-cream mt-2">Explore Our Menu</h2>
+                <p class="text-warmGray mt-4 text-base sm:text-lg">Prices listed in Ethiopian Birr (ETB). Fresh ingredients prepared to order.</p>
+            </div>
+
+            <!-- Menu Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12" id="menu-tabs">
+                <button class="tab-btn active px-5 py-2.5 rounded-full border border-amber/40 font-medium text-sm transition-all" data-category="all">
+                    All Items
+                </button>
+                <button class="tab-btn px-5 py-2.5 rounded-full border border-amber/40 font-medium text-sm text-cream/80 hover:border-amber transition-all" data-category="buna">
+                    <i class="fa-solid fa-mug-saucer mr-1.5"></i> Buna & Drinks
+                </button>
+                <button class="tab-btn px-5 py-2.5 rounded-full border border-amber/40 font-medium text-sm text-cream/80 hover:border-amber transition-all" data-category="breakfast">
+                    <i class="fa-solid fa-egg mr-1.5"></i> Breakfast & Pastries
+                </button>
+                <button class="tab-btn px-5 py-2.5 rounded-full border border-amber/40 font-medium text-sm text-cream/80 hover:border-amber transition-all" data-category="bites">
+                    <i class="fa-solid fa-burger mr-1.5"></i> Mains & Bites
+                </button>
+                <button class="tab-btn px-5 py-2.5 rounded-full border border-amber/40 font-medium text-sm text-cream/80 hover:border-amber transition-all" data-category="desserts">
+                    <i class="fa-solid fa-ice-cream mr-1.5"></i> Desserts
+                </button>
+            </div>
+
+            <!-- Menu Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="menu-grid">
+                <!-- Item 1: Traditional Jebena Buna -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="buna">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Traditional Jebena Buna</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">80 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Freshly roasted and brewed Ethiopian coffee served in traditional ceramic cups (Sini) with popcorn.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold"><i class="fa-solid fa-star mr-1"></i> House Specialty</span>
+                </div>
+
+                <!-- Item 2: Special Macchiato -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="buna">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Special Layered Macchiato</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">110 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Classic Ethiopian styled thick espresso with velvety steamed milk layers and foam top.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold">Best Seller</span>
+                </div>
+
+                <!-- Item 3: Special Chechebsa -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="breakfast">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Chechebsa with Honey & Egg</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">260 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Shredded flatbread fried in spiced butter (Niter Kibbeh) & berbere, topped with local honey and fried egg.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold">Traditional Breakfast</span>
+                </div>
+
+                <!-- Item 4: Buna & Bites Signature Burger -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="bites">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Buna & Bites Gourmet Burger</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">450 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Juicy beef patty, melted cheddar, caramelised onions, fresh lettuce, and house signature spiced sauce with crispy fries.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold"><i class="fa-solid fa-fire mr-1"></i> Chef's Choice</span>
+                </div>
+
+                <!-- Item 5: Ful Medames Special -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="breakfast">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Special Ethiopian Ful</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">220 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Slow-cooked fava beans with garlic, fresh tomatoes, green chili, yogurt, boiled egg, and warm crusty bread.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold">Hearty Favourite</span>
+                </div>
+
+                <!-- Item 6: Grilled Chicken Sandwich -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="bites">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Herb Grilled Chicken Club</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">390 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Marinated grilled chicken breast, avocado spread, bacon, tomato, and garlic mayo on toasted sourdough.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold">Fresh & Healthy</span>
+                </div>
+
+                <!-- Item 7: Spiced Cardamom Iced Latte -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="buna">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Cardamom Iced Latte</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">150 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Cold brew coffee infused with roasted cardamom pods, whole milk, and subtle organic vanilla syrup.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold">Refreshing</span>
+                </div>
+
+                <!-- Item 8: Chocolate Lava Cake with Ice Cream -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="desserts">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Warm Chocolate Fondant</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">280 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Rich dark chocolate cake with a molten center, served with a scoop of artisanal vanilla bean ice cream.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold">Sweet Delight</span>
+                </div>
+
+                <!-- Item 9: Ethiopian Honey Cake (Tef Cake) -->
+                <div class="menu-item bg-roast/50 border border-roast p-6 rounded-2xl hover:border-amber/50 transition-all" data-category="desserts">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-serif text-xl font-bold text-cream">Honey & Spice Tef Cake</h3>
+                        <span class="text-amber font-bold text-lg bg-amber/10 px-3 py-1 rounded-full border border-amber/20">240 ETB</span>
+                    </div>
+                    <p class="text-warmGray text-sm mb-4">Gluten-friendly tef cake infused with cinnamon, cloves, and local wild honey glaze.</p>
+                    <span class="text-xs text-amber/80 uppercase tracking-wider font-semibold">Local Special</span>
+                </div>
+            </div>
+
+            <!-- Call to Action Note -->
+            <div class="mt-12 text-center bg-roast/30 border border-amber/20 rounded-2xl p-6 max-w-2xl mx-auto">
+                <p class="text-cream/90 text-sm sm:text-base">
+                    <i class="fa-solid fa-circle-info text-amber mr-2"></i>
+                    Vegetarian, vegan, and fasting (Tsom) meal options are gladly available every day.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 lg:py-28 bg-cream text-espresso">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-amber font-semibold uppercase tracking-wider text-sm">Visual Journey</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-espresso mt-2">Café Gallery</h2>
+                <p class="text-roast/80 mt-4 text-base sm:text-lg">Step inside Buna & Bites Café—take a glimpse at our cozy interior, buna rituals, and delicious food.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-md bg-roast cursor-pointer h-72" onclick="openLightbox('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1200&auto=format&fit=crop', 'Authentic Coffee Ceremony Setup')">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop" 
+                         alt="Buna Coffee Ritual" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/800x600/2C1A1D/FAF6F0?text=Coffee+Ritual'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-amber text-xs uppercase font-semibold">Culture</p>
+                            <h4 class="text-cream font-serif font-bold text-lg">Authentic Buna Ceremony</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-md bg-roast cursor-pointer h-72" onclick="openLightbox('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1200&auto=format&fit=crop', 'Barista Crafting Fresh Espresso')">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop" 
+                         alt="Barista at work" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/800x600/4A2E2B/FAF6F0?text=Barista+Art'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-amber text-xs uppercase font-semibold">Craftsmanship</p>
+                            <h4 class="text-cream font-serif font-bold text-lg">Specialty Barista Art</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-md bg-roast cursor-pointer h-72" onclick="openLightbox('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop', 'Cozy Seating & Atmosphere')">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop" 
+                         alt="Café Interior Seating" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/800x600/2C1A1D/FAF6F0?text=Interior+Ambiance'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-amber text-xs uppercase font-semibold">Ambiance</p>
+                            <h4 class="text-cream font-serif font-bold text-lg">Cozy Interior Space</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-md bg-roast cursor-pointer h-72" onclick="openLightbox('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop', 'Gourmet Beef Burger & French Fries')">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop" 
+                         alt="Gourmet Burger" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/800x600/2C1A1D/FAF6F0?text=Gourmet+Bites'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-amber text-xs uppercase font-semibold">Food</p>
+                            <h4 class="text-cream font-serif font-bold text-lg">Gourmet Bites & Meals</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-md bg-roast cursor-pointer h-72" onclick="openLightbox('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop', 'Fresh Baked Croissants and Pastries')">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop" 
+                         alt="Fresh Bakery" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/800x600/4A2E2B/FAF6F0?text=Fresh+Pastries'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-amber text-xs uppercase font-semibold">Bakery</p>
+                            <h4 class="text-cream font-serif font-bold text-lg">Daily Fresh Pastries</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden shadow-md bg-roast cursor-pointer h-72" onclick="openLightbox('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop', 'Evening Vibes & Hospitality')">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" 
+                         alt="Evening Dining Ambiance" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/800x600/2C1A1D/FAF6F0?text=Evening+Vibes'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-amber text-xs uppercase font-semibold">Evening</p>
+                            <h4 class="text-cream font-serif font-bold text-lg">Relaxed Night Dinning</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal for Gallery -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-sm">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-cream hover:text-amber text-3xl focus:outline-none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl max-h-[85vh] flex flex-col items-center">
+            <img id="lightbox-img" src="" alt="Zoomed view" class="max-w-full max-h-[75vh] rounded-xl object-contain shadow-2xl">
+            <p id="lightbox-caption" class="text-cream font-serif text-lg mt-4 text-center"></p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 lg:py-28 bg-roast text-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber font-semibold uppercase tracking-wider text-sm">Get In Touch</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-cream mt-2">Visit Us or Reserve a Table</h2>
+                <p class="text-cream/80 mt-4 text-base sm:text-lg">We look forward to serving you the finest coffee and delicious meals in Addis Ababa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- Business Information & Hours -->
+                <div class="lg:col-span-5 space-y-8 bg-espresso/80 p-8 rounded-3xl border border-amber/20 shadow-xl">
+                    <h3 class="font-serif text-2xl font-bold text-cream border-b border-warmGray/30 pb-4">Café Details</h3>
+
+                    <!-- Address -->
+                    <div class="flex items-start space-x-4">
+                        <div class="p-3 bg-amber/20 text-amber rounded-xl mt-1">
+                            <i class="fa-solid fa-location-dot text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-cream">Location</h4>
+                            <p class="text-warmGray text-sm mt-1">Bole Road, Near Friendship Park / Kazanchis Area<br>Addis Ababa, Ethiopia</p>
+                        </div>
+                    </div>
+
+                    <!-- Opening Hours -->
+                    <div class="flex items-start space-x-4">
+                        <div class="p-3 bg-amber/20 text-amber rounded-xl mt-1">
+                            <i class="fa-solid fa-clock text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-cream">Opening Hours</h4>
+                            <p class="text-warmGray text-sm mt-1">Monday – Sunday: <span class="text-amber font-medium">7:00 AM – 10:00 PM</span></p>
+                            <p class="text-xs text-warmGray/80 mt-0.5">Traditional Buna Ceremony: 10 AM & 4 PM Daily</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="flex items-start space-x-4">
+                        <div class="p-3 bg-amber/20 text-amber rounded-xl mt-1">
+                            <i class="fa-solid fa-phone text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-cream">Phone & Direct Contact</h4>
+                            <p class="text-warmGray text-sm mt-1">+251 91 123 4567 / +251 11 661 0000</p>
+                            <p class="text-warmGray text-sm">info@bunanbites.com</p>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Quick Button -->
+                    <div class="pt-2">
+                        <a href="https://wa.me/251911234567?text=Hello%20Buna%20%26%20Bites!%20I'd%20like%20to%20ask%20a%20question/reserve." target="_blank" class="w-full bg-sage hover:bg-emerald-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors shadow-md flex items-center justify-center space-x-3">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Chat on WhatsApp Directly</span>
+                        </a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="pt-4 border-t border-warmGray/20">
+                        <p class="text-xs uppercase tracking-wider text-warmGray mb-3 font-semibold">Follow Our Journey</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-roast flex items-center justify-center text-cream hover:text-amber hover:bg-espresso transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-roast flex items-center justify-center text-cream hover:text-amber hover:bg-espresso transition-colors"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-roast flex items-center justify-center text-cream hover:text-amber hover:bg-espresso transition-colors"><i class="fa-brands fa-telegram text-lg"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-roast flex items-center justify-center text-cream hover:text-amber hover:bg-espresso transition-colors"><i class="fa-brands fa-tiktok text-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Contact & Reservation Form -->
+                <div class="lg:col-span-7 bg-espresso/80 p-8 rounded-3xl border border-amber/20 shadow-xl">
+                    <h3 class="font-serif text-2xl font-bold text-cream mb-6">Send Us a Message / Table Reservation</h3>
+
+                    <!-- Message Notification Box -->
+                    <div id="form-feedback" class="hidden p-4 rounded-xl mb-6 text-sm"></div>
+
+                    <form id="contact-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="block text-xs uppercase font-semibold text-warmGray mb-2">Your Name *</label>
+                                <input type="text" id="name" required class="w-full bg-roast/60 border border-warmGray/30 rounded-xl px-4 py-3 text-cream placeholder-warmGray/60 focus:outline-none focus:border-amber transition-colors" placeholder="Abebe Kebede">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs uppercase font-semibold text-warmGray mb-2">Email Address *</label>
+                                <input type="email" id="email" required class="w-full bg-roast/60 border border-warmGray/30 rounded-xl px-4 py-3 text-cream placeholder-warmGray/60 focus:outline-none focus:border-amber transition-colors" placeholder="abebe@example.com">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="phone" class="block text-xs uppercase font-semibold text-warmGray mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full bg-roast/60 border border-warmGray/30 rounded-xl px-4 py-3 text-cream placeholder-warmGray/60 focus:outline-none focus:border-amber transition-colors" placeholder="+251 9...">
+                            </div>
+                            <div>
+                                <label for="type" class="block text-xs uppercase font-semibold text-warmGray mb-2">Inquiry Type</label>
+                                <select id="type" class="w-full bg-roast/60 border border-warmGray/30 rounded-xl px-4 py-3 text-cream focus:outline-none focus:border-amber transition-colors">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="reservation">Table Reservation</option>
+                                    <option value="catering">Event / Catering</option>
+                                    <option value="feedback">Feedback</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs uppercase font-semibold text-warmGray mb-2">Message or Reservation Details *</label>
+                            <textarea id="message" rows="4" required class="w-full bg-roast/60 border border-warmGray/30 rounded-xl px-4 py-3 text-cream placeholder-warmGray/60 focus:outline-none focus:border-amber transition-colors" placeholder="Please specify date, time, and number of guests for reservations..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-amber hover:bg-amberHover text-espresso font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Embedded Google Map Location Container -->
+            <div class="mt-16 rounded-3xl overflow-hidden border border-amber/20 shadow-2xl h-80 sm:h-96 relative">
+                <!-- Embedded Google Map iframe showing Addis Ababa -->
+                <iframe 
+                    title="Buna & Bites Location Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63048.43598767972!2d38.746831!3d9.010793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24d49!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2set!4v1710000000000!5m2!1sen!2set" 
+                    class="w-full h-full border-0 filter grayscale opacity-90 hover:grayscale-0 transition-all duration-500" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Action Button -->
+    <a href="https://wa.me/251911234567?text=Hello%20Buna%20%26%20Bites!%20I%20would%20like%20to%20place%20an%20order%20or%20make%20a%20reservation." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-40 bg-sage hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center pulse-btn transition-transform hover:scale-110"
+       aria-label="Contact us on WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-espresso text-warmGray border-t border-roast/60 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                <!-- Brand Info -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-amber flex items-center justify-center text-espresso font-bold font-serif text-lg">B</div>
+                    <span class="font-serif text-xl font-bold text-cream">Buna & Bites Café</span>
+                </div>
+
+                <p class="text-xs text-warmGray">
+                    &copy; <span id="current-year"></span> Buna & Bites Café. All rights reserved. Bole Road, Addis Ababa, Ethiopia.
+                </p>
+
+                <!-- Navigation Quick Links -->
+                <div class="flex space-x-6 text-xs text-cream/70">
+                    <a href="#home" class="hover:text-amber">Home</a>
+                    <a href="#about" class="hover:text-amber">About</a>
+                    <a href="#menu" class="hover:text-amber">Menu</a>
+                    <a href="#contact" class="hover:text-amber">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 1. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Menu Category Filtering Tabs
+        const tabButtons = document.querySelectorAll('#menu-tabs .tab-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-amber', 'text-white');
+                    btn.classList.add('text-cream/80');
+                });
+
+                // Add active class to clicked button
+                button.classList.add('active');
+                button.classList.remove('text-cream/80');
+
+                const filter = button.getAttribute('data-category');
+
+                menuItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 3. Gallery Lightbox Functions
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        function openLightbox(src, caption) {
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on clicking backdrop
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // 4. Contact Form Handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const feedback = document.getElementById('form-feedback');
+            const form = document.getElementById('contact-form');
+            const name = document.getElementById('name').value;
+
+            // Display simulated success message
+            feedback.className = 'p-4 rounded-xl mb-6 text-sm bg-sage/30 border border-sage text-cream';
+            feedback.innerHTML = `<i class="fa-solid fa-circle-check text-sage text-lg mr-2"></i> Ameseginalehu (Thank you), <strong>${name}</strong>! Your message/reservation request has been received. We will contact you shortly.`;
+            feedback.classList.remove('hidden');
+
+            form.reset();
+
+            // Smooth scroll feedback into view
+            feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
